@@ -16,15 +16,13 @@ namespace Principios_SOLID
 
         
     }
-    abstract class AnimalCazador : Animal
+    interface AnimalCazador
     {
         //gracias a esta subclase de animal,la clase tortuga, que no es un animal de caza,
         // ya no hereda el metodo cazar, por lo que no tendremos que lanzar una excepcion en caso de que una instancia de 
         // tortuga quiera acceder a dicho metodo
-        public void Cazar() 
-        {
-            Console.WriteLine("Yo cazo");
-        }
+        void Cazar();
+      
     }
 
     class Tortuga : Animal
@@ -32,8 +30,11 @@ namespace Principios_SOLID
 
     }
 
-    class Tigre : AnimalCazador
+    class Tigre : Animal, AnimalCazador
     {
-
+        public void Cazar()
+        {
+            Console.WriteLine("Yo cazo");
+        }
     }
 }
